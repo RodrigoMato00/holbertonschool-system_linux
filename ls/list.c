@@ -1,7 +1,7 @@
 #include "ls.h"
 
 /**
- * list_directory - list the contents of the current directory
+ * list_directory - list the contents of a directory
  * @path: the path to the directory
  */
 void list_directory(const char *path)
@@ -15,6 +15,7 @@ void list_directory(const char *path)
 		fprintf(stderr, "%s: cannot access %s: %s\n", "hls", path, strerror(errno));
 		return;
 	}
+
 	while ((entry = readdir(dir)) != NULL)
 	{
 		if (entry->d_name[0] != '.')
