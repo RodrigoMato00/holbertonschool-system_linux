@@ -15,5 +15,9 @@ int is_directory(const char *path);
 int _strcmp(const void *a, const void *b);
 void selection_sort(char **arr, int n);
 void process_args(int argc, char *argv[], char **dirs, char **files, int *dir_count, int *file_count);
+int _strcmp(const void *a, const void *b);
+void print_dirs_and_files(char **dirs, char **files, int dir_count, int file_count);
+
+
 
 #endif /* LS_H */

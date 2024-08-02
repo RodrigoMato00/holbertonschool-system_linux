@@ -1,3 +1,5 @@
+#include "ls.h"
+
 /**
  * selection_sort - sorts an array of strings
  * @arr: the array of strings to sort

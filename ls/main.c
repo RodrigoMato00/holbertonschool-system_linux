@@ -15,6 +15,8 @@ int main(int argc, char *argv[])
 	if (argc == 1)
 	{
 		list_directory(".");
+		free(dirs);
+		free(files);
 	}
 	else
 	{
