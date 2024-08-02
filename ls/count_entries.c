@@ -17,7 +17,6 @@ struct dirent **count_entries(const char *path, int *num_entries)
 	{
 		fprintf(stderr, "%s: cannot access %s: %s\n",
 			"hls", path, strerror(errno));
-
 		return (NULL);
 	}
 
@@ -28,7 +27,6 @@ struct dirent **count_entries(const char *path, int *num_entries)
 		closedir(dir);
 		return (NULL);
 	}
-
 	while ((entry = readdir(dir)) != NULL)
 	{
 		if (entry->d_name[0] != '.')
@@ -36,16 +34,12 @@ struct dirent **count_entries(const char *path, int *num_entries)
 			if (count >= size)
 			{
 				size *= 2;
-				struct dirent **temp = realloc(entries, size * sizeof(struct dirent *));
-
-				if (temp == NULL)
+				if (!_entries(&entries, size))
 				{
-					perror("realloc");
 					free(entries);
 					closedir(dir);
 					return (NULL);
 				}
-				entries = temp;
 			}
 			entries[count] = entry;
 			count++;

@@ -20,5 +20,6 @@ void print_dirs_and_files(char **dirs, char **files, int dir_count, int file_cou
 void selection_sort_dirent(struct dirent **arr, int n);
 int compare_dirent(const struct dirent *a, const struct dirent *b);
 struct dirent **count_entries(const char *path, int *num_entries);
+int _entries(struct dirent ***entries, int size);
 
 #endif /* LS_H */
