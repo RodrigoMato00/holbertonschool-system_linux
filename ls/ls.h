@@ -19,5 +19,6 @@ void process_args(int argc, char *argv[], char **dirs, char **files, int *dir_co
 void print_dirs_and_files(char **dirs, char **files, int dir_count, int file_count);
 void selection_sort_dirent(struct dirent **arr, int n);
 int compare_dirent(const struct dirent *a, const struct dirent *b);
+struct dirent **count_entries(const char *path, int *num_entries);
 
 #endif /* LS_H */
