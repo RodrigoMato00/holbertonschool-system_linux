@@ -3,7 +3,6 @@
 /**
  * list_directory - list the contents of the current directory
  */
-
 void list_directory(void)
 {
 	DIR *dir;
@@ -18,4 +17,6 @@ void list_directory(void)
 		}
 	}
 	printf("\n");
+
+	closedir(dir);
 }
