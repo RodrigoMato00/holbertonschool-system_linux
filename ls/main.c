@@ -16,8 +16,7 @@ int main(int argc, char *argv[])
 	if (argc == 1)
 	{
 		list_directory(".");
-		free(dirs);
-		free(files);
+
 	}
 	else
 	{
@@ -39,8 +38,8 @@ int main(int argc, char *argv[])
 				list_directory(files[count]);
 			}
 		}
-		free(dirs);
-		free(files);
 	}
+	free(dirs);
+	free(files);
 	return (0);
 }

@@ -2,19 +2,18 @@
 
 /**
  * _strcmp - compares two strings
- * @a: first string
- * @b: second string
- * Return: comparison result
+ * @str1: the first string to compare
+ * @str2: the second string to compare
+ * Return: the difference between the first differing characters
  */
-int _strcmp(const void *a, const void *b)
+int _strcmp(const char *str1, const char *str2)
 {
-	const char *str1 = *(const char **)a;
-	const char *str2 = *(const char **)b;
-
-	while (*str1 && (*str1 == *str2))
+	while (*str1 && (_tolower((unsigned char)*str1) ==
+			_tolower((unsigned char)*str2)))
 	{
 		str1++;
 		str2++;
 	}
-	return (*(unsigned char *)str1 - *(unsigned char *)str2);
+
+	return (_tolower((unsigned char)*str1) - _tolower((unsigned char)*str2));
 }
