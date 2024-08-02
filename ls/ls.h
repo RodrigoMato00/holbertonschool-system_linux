@@ -7,7 +7,7 @@
 #include <errno.h>
 #include <string.h>
 
-void list_directory(void);
+void list_directory(const char *path);
 
 #endif
 
