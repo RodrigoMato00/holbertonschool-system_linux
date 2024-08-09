@@ -8,13 +8,20 @@
  */
 int _entries(struct dirent ***entries, int size)
 {
-	struct dirent **temp = realloc(*entries, size * sizeof(struct dirent *));
+	struct dirent **temp;
 
+	temp = malloc(size * sizeof(struct dirent *));
 	if (temp == NULL)
 	{
-		perror("realloc");
+		perror("malloc");
 		return (0);
 	}
+
+	memcpy(temp, *entries, size / 2 * sizeof(struct dirent *));
+
+	free(*entries);
+
 	*entries = temp;
+
 	return (1);
 }
