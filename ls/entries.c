@@ -22,7 +22,6 @@ int _entries(struct dirent ***entries, int size)
 	{
 		temp[count] = (*entries)[count];
 	}
-#
 
 	free(*entries);
 
