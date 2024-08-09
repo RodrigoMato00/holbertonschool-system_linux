@@ -1,4 +1,5 @@
 #include "ls.h"
+#include <errno.h>
 
 /**
  * count_entries - count the number of entries in a directory
@@ -15,8 +16,9 @@ struct dirent **count_entries(const char *path, int *num_entries)
 	dir = opendir(path);
 	if (dir == NULL)
 	{
-		fprintf(stderr, "%s: cannot access %s: %s\n",
-			"hls", path, strerror(errno));
+		fprintf(stderr, "cannot access %s: ", path);
+		perror("");
+
 		return (NULL);
 	}
 

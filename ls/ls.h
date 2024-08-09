@@ -1,6 +1,8 @@
 #ifndef LS_H
 #define LS_H
 
+extern char *program_name;
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
