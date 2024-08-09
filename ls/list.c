@@ -22,5 +22,5 @@ void list_directory(const char *path)
 		printf("%s  ", entries[count]->d_name);
 	}
 	printf("\n");
-	free(entries);
+	free_entries(entries, num_entries);
 }

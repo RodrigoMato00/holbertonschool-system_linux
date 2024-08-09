@@ -2,6 +2,20 @@
 #include <errno.h>
 
 /**
+ * free_entries - frees the memory allocated for the entries
+ * @entries: double pointer to the array of entries
+ * @num_entries: the number of entries
+ */
+void free_entries(struct dirent **entries, int num_entries)
+{
+	for (int i = 0; i < num_entries; i++)
+	{
+		free(entries[i]);
+	}
+	free(entries);
+}
+
+/**
  * handle_entry - handles resizing and copying entries
  * @entries: double pointer to the array of entries
  * @count: pointer to the count of current entries
@@ -19,7 +33,6 @@ struct dirent **handle_entry(struct dirent ***entries,
 	{
 		*size *= 2;
 		new_entries = malloc(*size * sizeof(struct dirent *));
-
 		if (new_entries == NULL)
 		{
 			perror("malloc");
@@ -36,6 +49,7 @@ struct dirent **handle_entry(struct dirent ***entries,
 		free(*entries);
 		*entries = new_entries;
 	}
+
 	(*entries)[*count] = malloc(sizeof(struct dirent));
 	if ((*entries)[*count] == NULL)
 	{
@@ -47,6 +61,7 @@ struct dirent **handle_entry(struct dirent ***entries,
 		free(*entries);
 		return (NULL);
 	}
+
 	*(*entries)[*count] = *entry;
 	(*count)++;
 
@@ -98,3 +113,4 @@ struct dirent **count_entries(const char *path, int *num_entries)
 	closedir(dir);
 	return (entries);
 }
+
