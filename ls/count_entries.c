@@ -30,7 +30,7 @@ struct dirent **handle_entry(struct dirent ***entries,
 			free(*entries);
 			return (NULL);
 		}
-		for (int i = 0; i < *count; i++)
+		for (i = 0; i < *count; i++)
 			new_entries[i] = (*entries)[i];
 
 		free(*entries);
@@ -40,7 +40,7 @@ struct dirent **handle_entry(struct dirent ***entries,
 	if ((*entries)[*count] == NULL)
 	{
 		perror("malloc");
-		for (int i = 0; i < *count; i++)
+		for (i = 0; i < *count; i++)
 		{
 			free((*entries)[i]);
 		}
