@@ -8,7 +8,9 @@
  */
 void free_entries(struct dirent **entries, int num_entries)
 {
-	for (int i = 0; i < num_entries; i++)
+	int i;
+
+	for (i = 0; i < num_entries; i++)
 	{
 		free(entries[i]);
 	}
