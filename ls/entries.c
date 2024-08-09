@@ -9,6 +9,7 @@
 int _entries(struct dirent ***entries, int size)
 {
 	struct dirent **temp;
+	int count;
 
 	temp = malloc(size * sizeof(struct dirent *));
 	if (temp == NULL)
@@ -17,7 +18,11 @@ int _entries(struct dirent ***entries, int size)
 		return (0);
 	}
 
-	memcpy(temp, *entries, size / 2 * sizeof(struct dirent *));
+	for (count = 0; count < size / 2; count++)
+	{
+		temp[count] = (*entries)[count];
+	}
+#
 
 	free(*entries);
 
