@@ -12,29 +12,30 @@
 struct dirent **handle_entry(struct dirent ***entries,
 				int *count, int *size, struct dirent *entry)
 {
+	struct dirent **new_entries;
+	int i = 0;
+
 	if (*count >= *size)
 	{
 		*size *= 2;
-		struct dirent **new_entries = malloc(*size * sizeof(struct dirent *));
+		new_entries = malloc(*size * sizeof(struct dirent *));
 
 		if (new_entries == NULL)
 		{
 			perror("malloc");
-			for (int i = 0; i < *count; i++)
+			for (; i < *count; i++)
 			{
 				free((*entries)[i]);
 			}
 			free(*entries);
 			return (NULL);
 		}
-
 		for (int i = 0; i < *count; i++)
 			new_entries[i] = (*entries)[i];
 
 		free(*entries);
 		*entries = new_entries;
 	}
-
 	(*entries)[*count] = malloc(sizeof(struct dirent));
 	if ((*entries)[*count] == NULL)
 	{
@@ -46,7 +47,6 @@ struct dirent **handle_entry(struct dirent ***entries,
 		free(*entries);
 		return (NULL);
 	}
-
 	*(*entries)[*count] = *entry;
 	(*count)++;
 
