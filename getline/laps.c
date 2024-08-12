@@ -7,9 +7,13 @@
  */
 void add_car(car_t **head, int id)
 {
-	car_t *new_car = malloc(sizeof(car_t));
-	if (!new_car)
+	car_t *new_car;
+
+	new_car = malloc(sizeof(car_t));
+	if (new_car == NULL)
+	{
 		return;
+	}
 	new_car->id = id;
 	new_car->laps = 0;
 	new_car->next = *head;
@@ -25,10 +29,12 @@ void add_car(car_t **head, int id)
  */
 car_t *find_car(car_t *head, int id)
 {
-	while (head)
+	while (head != NULL)
 	{
 		if (head->id == id)
+		{
 			return head;
+		}
 		head = head->next;
 	}
 	return NULL;
@@ -41,10 +47,13 @@ car_t *find_car(car_t *head, int id)
  */
 void race_state(int *id, size_t size)
 {
-	static car_t *head = NULL;
+	static car_t *head;
+	car_t *car;
+	size_t i;
+
 	if (size == 0)
 	{
-		while (head)
+		while (head != NULL)
 		{
 			car_t *temp = head;
 			head = head->next;
@@ -53,10 +62,10 @@ void race_state(int *id, size_t size)
 		return;
 	}
 
-	for (size_t i = 0; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
-		car_t *car = find_car(head, id[i]);
-		if (!car)
+		car = find_car(head, id[i]);
+		if (car == NULL)
 		{
 			add_car(&head, id[i]);
 		}
@@ -67,7 +76,7 @@ void race_state(int *id, size_t size)
 	}
 
 	printf("Race state:\n");
-	for (car_t *current = head; current; current = current->next)
+	for (car_t *current = head; current != NULL; current = current->next)
 	{
 		printf("Car %d [%d laps]\n", current->id, current->laps);
 	}
