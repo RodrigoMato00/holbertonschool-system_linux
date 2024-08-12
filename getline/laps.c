@@ -33,11 +33,11 @@ car_t *find_car(car_t *head, int id)
 	{
 		if (head->id == id)
 		{
-			return head;
+			return (head);
 		}
 		head = head->next;
 	}
-	return NULL;
+	return (NULL);
 }
 
 /**
@@ -56,6 +56,7 @@ void race_state(int *id, size_t size)
 		while (head != NULL)
 		{
 			car_t *temp = head;
+
 			head = head->next;
 			free(temp);
 		}
