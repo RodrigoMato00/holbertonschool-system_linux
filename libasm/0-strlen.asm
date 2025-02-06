@@ -1,22 +1,17 @@
-; 0-strlen.asm
-; Function: asm_strlen
-; length of a string.
-; Input:
-;   RDI -> pointer to the string.
-; Output:
-;   RAX = length of the string type size_t.
+BITS 64
 
 global asm_strlen
 
 section .text
 asm_strlen:
-    xor rax, rax              ; Initialize RAX in 0
-start:
-    mov dl, byte [rdi + rax]  ; Load byte into DL
-    cmp dl, 0                 ; Compare byte 0
-    je end                    ; 0 jump to end
-    inc rax                   ; ++ counter
-    jmp start                 ; Loop to start
-end:
-    ret                       ; Return length in RAX
+    xor rax, rax              ; Initialize to 0
 
+.loop:                        ; Loop
+    mov dl, byte [rdi + rax]  ; Load the current byte in DL
+    cmp dl, 0                 ; Compare the byte with 0
+    je .end                   ; If zero, jump to the end
+    inc rax                   ; ++ counter
+    jmp .loop                 ; Repeat
+
+.end:                         ; End
+    ret                       ; Return
