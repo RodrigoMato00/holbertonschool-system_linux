@@ -60,4 +60,3 @@ asm_strncasecmp:
     mov rsp, rbp
     pop rbp                    ; Restore bp
     ret                        ; End
-  
