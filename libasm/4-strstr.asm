@@ -43,6 +43,7 @@ asm_strstr:
 
 .needle_empty:
     mov rax, rdi           ; Result = haystack ptr
+    jmp .finish 	   ; Return
 
 .not_found:
     xor rax, rax           ; Result = 0
