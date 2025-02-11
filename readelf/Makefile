@@ -1,6 +1,21 @@
-
+TARGET = 0-hreadelf
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -pedantic
+CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89 -g
 
-0-hreadelf: 0-hreadelf.c
-	$(CC) $(FLAGS) 0-hreadelf.c -o 0-hreadelf
+SRC = 0-hreadelf.c
+OBJ = $(SRC:.c=.o)
+
+.PHONY: all clean fclean re
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(TARGET)
+
+re: fclean all
