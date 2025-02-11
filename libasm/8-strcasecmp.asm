@@ -13,10 +13,10 @@ asm_strcasecmp:
     mov rcx, rsi               ; b_ptr = s2
     movzx eax, byte [rax]      ; a = s1[i]
     movzx ecx, byte [rcx]      ; b = s2[i]
-    cmp al, 0                  ; If a == 0
-    jne .cont_check
-    cmp cl, 0                  ; If b == 0
-    je .exit_loop              ; (a == 0 ∧ b == 0) → break
+    cmp al, 0                  ; If a == 0 → break
+    je .exit_loop
+    cmp cl, 0                  ; If b == 0 → break
+    je .exit_loop
 .cont_check:
     cmp al, 65                 ; If a ≥ 'A'
     jl .skip_a
@@ -54,4 +54,4 @@ asm_strcasecmp:
     pop rdx                   ; Restore rdx
     mov rsp, rbp
     pop rbp                   ; Restore bp
-    ret 		      ; End
+    ret                       ; End
