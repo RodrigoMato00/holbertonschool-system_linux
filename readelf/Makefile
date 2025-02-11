@@ -11,7 +11,7 @@ SRC2    = 2-hreadelf.c
 OBJ2    = $(SRC2:.c=.o)
 
 CC      = gcc
-CFLAGS  = -Wall -Werror -Wextra -pedantic -std=gnu89 -g
+CFLAGS  = -Wall -Werror -Wextra -pedantic
 
 .PHONY: all clean fclean re
 
