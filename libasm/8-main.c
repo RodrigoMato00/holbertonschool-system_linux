@@ -25,6 +25,7 @@ int main(void)
     assert(strcasecmp(S1, S4) == asm_strcasecmp(S1, S4));
     assert(strcasecmp(S1, S5) == asm_strcasecmp(S1, S5));
     assert(strcasecmp(S5, S6) == asm_strcasecmp(S5, S6));
+    assert(strcasecmp(S5, S1) == asm_strcasecmp(S5, S1));
 
     printf("All good!\n");
     return (EXIT_SUCCESS);
