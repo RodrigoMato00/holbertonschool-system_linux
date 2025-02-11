@@ -1,9 +1,7 @@
-# Variables para 0-hreadelf
 TARGET0 = 0-hreadelf
 SRC0    = 0-hreadelf.c
 OBJ0    = $(SRC0:.c=.o)
 
-# Variables para 1-hreadelf
 TARGET1 = 1-hreadelf
 SRC1    = 1-hreadelf.c
 OBJ1    = $(SRC1:.c=.o)
