@@ -3,22 +3,21 @@
 #include <unistd.h>
 
 /**
- * main - read ELF file with exeve
- * @argc: The number of command line arguments
- * @argv: An array containing the program command line arguments
- * @env:  An array containing the program environment
- * Return: EXIT_SUCCESS or EXIT_FAILURE
+ * main - Entry point for the readelf program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of strings representing the command-line arguments.
+ *
+ * Return: 0 on success, or a non-zero error code on failure.
  */
-int main(int argc, char **argv, char **env)
+int main(int argc, char **argv)
 {
-	char *cmnd[] = {"/usr/bin/readelf", "-W", "-S", "", NULL};
+    if (argc != 2)
+    {
+        fprintf(stderr, "Usage: %s elf_filename\n", argv[0]);
+        return EXIT_FAILURE;
+    }
 
-	(void)argc;
-	cmnd[3] = argv[1];
-	if (execve("/usr/bin/readelf", cmnd, env) == -1)
-	{
-		perror("execv");
-		return (EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
+    execlp("readelf", "readelf", "-W", "-S", argv[1], (char *)NULL);
+    perror("execlp");
+    return EXIT_FAILURE;
 }
